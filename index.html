@@ -4,7 +4,7 @@
 </head>
 <body>
 
-	<svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg>
+	<svg id="svg" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%"></svg>
 
 	<script>
 	function Circle(cx, cy, html_id)
@@ -15,6 +15,15 @@
 		//private function that generates a random number
 		var randomNumberBetween = function(min, max){
 			return Math.random()*(max-min) + min;
+		}
+
+		function getRandomColor() {
+    		var letters = '0123456789ABCDEF';
+    		var color = '#';
+    		for (var i = 0; i < 6; i++ ) {
+        		color += letters[Math.floor(Math.random() * 16)];
+    			}
+    		return color;
 		}
 
 		this.initialize = function(){
@@ -28,9 +37,9 @@
 			var circle = makeSVG('circle', 
 				{ 	cx: this.info.cx,
 				  	cy: this.info.cy,
-				  	r:  10,
+				  	r:  Math.random()*100,
 				  	id: html_id,
-				  	style: "fill: black"
+				  	style: "fill: " + getRandomColor(),
 				});
 
 			document.getElementById('svg').appendChild(circle);
